@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Context.Response.ContentType = "text/html";
+}
+
+<h2>Feed Minuto Seguros</h2>
+<hr />
+<br />
+@using (Html.BeginForm())
+{
+    
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Link</th>
+            <th>Descrição</th>
+            <th>Data de Publicação</th>
+            <th>Total de Palavras</th>
+            <th>Top 10 palavras</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (ViewBag.Feed != null)
+    {
+        foreach (var item in ViewBag.Feed)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Link</td>
+                <td>@Html.Raw(@item.Descricao)</td>
+                <td>@item.DataPublicacao</td>
+                <td>@item.TotalPalavras</td>
+                <td>@Html.Raw(@item.TopPalavras)</td>   
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
